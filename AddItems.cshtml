@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+<div class="cart-container">
+    @foreach (var item in Model)
+    {
+        <div class="cart-item">
+            <div class="cart-item-info">
+                <h1>Product ID: <span>@item.ProductId</span></h1>
+                <h1>User ID: <span>@item.UserId</span></h1>
+            </div>
+            <div class="cart-item-actions">
+           
+                <button class="remove-btn" type="button">Remove</button>
+            </div>
+        </div>
+    }
+</div>
