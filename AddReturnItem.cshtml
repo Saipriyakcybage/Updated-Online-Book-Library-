@@ -1,0 +1,33 @@
+﻿@model ReturnBookDto
+
+@{
+    ViewBag.Title = "Add Returned Book";
+}
+
+<h2>Add Returned Book</h2>
+
+<form method="post" asp-action="AddReturnItem">
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input asp-for="Username" class="form-control" placeholder="Enter user email" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Product ID</label>
+        <input asp-for="ProductId" class="form-control" placeholder="Enter product ID" />
+        <span asp-validation-for="ProductId" class="text-danger"></span>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col d-grid">
+            <button type="submit" class="btn btn-primary">Return Book</button>
+        </div>
+        <div class="col d-grid">
+            <a class="btn btn-outline-primary" asp-action="Index" role="button">
+                Cancel
+            </a>
+        </div>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-primary">View Returned Books</a>
+
+</form>

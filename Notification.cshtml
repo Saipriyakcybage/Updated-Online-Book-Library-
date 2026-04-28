@@ -1,0 +1,91 @@
+﻿@model List<Notification>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .notification-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .notification-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .notification-item {
+        background: #f1f1f1;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .notification-item li {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .notification-item form {
+            margin-top: 10px;
+        }
+
+    button {
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<div class="notification-container">
+    @if (Model.Count == 0)
+    {
+        <h1>No New Notifications</h1>
+    }
+    else
+    {
+        <h1>New Notifications</h1>
+        <ul class="notification-list">
+            @foreach (var item in Model)
+            {
+                <li class="notification-item">
+                    <ol>
+                        <li><strong>Borrow ID:</strong> @item.BorrowId</li>
+                        <li><strong>Request Date:</strong> @item.RequestDate</li>
+                    </ol>
+                    <form asp-action="AcceptRequest" method="post" asp-route-Id="@item.Id">
+                        <button type="submit">Accept</button>
+                    </form>
+                </li>
+            }
+        </ul>
+    }
+</div>
